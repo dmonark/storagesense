@@ -1,0 +1,23 @@
+{
+  "name": "storagesense",
+  "version": "0.0.1",
+  "description": "Grain storage moniting system API server",
+  "main": "app.js",
+  "scripts": {
+	"start": "node app.js",
+    "test": "echo \"Error\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdedakiya/storagesense.git"
+  },
+  "author": "Monark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdedakiya/storagesense/issues"
+  },
+  "homepage": "https://github.com/mdedakiya/storagesense#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
