@@ -1,0 +1,21 @@
+{
+  "development": {
+    "use_env_variable": "DATABASE_URL" 
+  },
+  "test": {
+    "username": "ruhthkgsigewxg",
+    "password": "96edc5c3429c360eaca37b6561dd7abf1ba5cae217348130d3b4fafef0eb3b9b",
+    "database": "dclug04uhe8hci",
+    "host": "ec2-54-235-68-3.compute-1.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "ruhthkgsigewxg",
+    "password": "96edc5c3429c360eaca37b6561dd7abf1ba5cae217348130d3b4fafef0eb3b9b",
+    "database": "dclug04uhe8hci",
+    "host": "ec2-54-235-68-3.compute-1.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}

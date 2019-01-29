@@ -1,23 +1,20 @@
 {
   "name": "storagesense",
-  "version": "0.0.1",
-  "description": "Grain storage moniting system API server",
-  "main": "app.js",
+  "version": "1.0.0",
+  "description": "Grain storage monitring system",
+  "main": "index.js",
   "scripts": {
-	"start": "node app.js",
-    "test": "echo \"Error\""
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mdedakiya/storagesense.git"
-  },
-  "author": "Monark",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mdedakiya/storagesense/issues"
-  },
-  "homepage": "https://github.com/mdedakiya/storagesense#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "jsonwebtoken": "^8.4.0",
+    "pg": "^7.8.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.42.0"
   }
 }

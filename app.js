@@ -1,12 +1,13 @@
-var express = require("express");
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
 
-var port = process.env.PORT || 3000;
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.listen(port, () => {
- console.log("Server running on port 3000");
-});
+require('./server/routes')(app);
+app.get('*', (req, res) => res.status(200).send({
+  message: 'Welcome to the beginning of nothingness.',
+}));
 
-app.get("/url", (req, res, next) => {
- res.json(["Tony","Lisa","Michael","Ginger","Food"]);
-});
+module.exports = app;
