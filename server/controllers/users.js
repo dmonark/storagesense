@@ -6,10 +6,10 @@ module.exports = {
   create(req, res) {
     return user
       .create({
-        name: req.body.name,
-				password: req.body.password,
-				mobile: req.body.mobile,
-				email: req.body.email
+        name: req.query.name,
+				password: req.query.password,
+				mobile: req.query.mobile,
+				email: req.query.email
       })
       .then((user) => res.status(201).send(user))
       .catch((error) => res.status(400).send(error));
