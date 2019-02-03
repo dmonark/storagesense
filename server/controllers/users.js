@@ -44,7 +44,7 @@ module.exports = {
 				include: [{
           model: device,
           as: 'devices',
-					attributes: ['id', 'name', 'lat', 'long', 'address']
+					attributes: ['id', 'name', 'lan', 'long', 'address']
 				}],
 				attributes: ['id', 'name', 'email', 'mobile']
 			})

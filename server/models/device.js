@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
     });
+		device.hasMany(models.temp, {
+      foreignKey: 'deviceId',
+      as: 'devices',
+    });	
   };
 	
   return device;
