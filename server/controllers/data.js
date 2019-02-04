@@ -1,14 +1,14 @@
-const temp = require('../models').temp;
 const device = require('../models').device;
+const dataList = [require('../models').temp, require('../models').moisture, require('../models').cogas];
 
 module.exports = {
   create(req, res) {
-    return temp
+    return dataList[req.body.whichEntity]
       .create({
         data: req.query.data,
 				deviceId: req.query.deviceID,
       })
-      .then((temp) => res.status(201).send(temp))
+      .then((data) => res.status(201).send(data))
       .catch((error) => res.status(400).send(error));
 	},
 	
@@ -36,7 +36,7 @@ module.exports = {
 				var startDate = req.query.start + "T00:00:01.000Z";
 				var endDate = req.query.end + "T23:59:59.827Z";
 				
-				return temp.findAll({
+				return dataList[req.body.whichEntity].findAll({
 					where: {
 						deviceId: devices[deviceIndex].id,
 						createdAt: { 
@@ -45,7 +45,7 @@ module.exports = {
 					},
 					attributes: ['id', 'data', 'createdAt']
 				})
-				.then((temp) => res.status(201).send(temp))
+				.then((data) => res.status(201).send(data))
 				.catch((error) => res.status(400).send(error));
 			
 			})

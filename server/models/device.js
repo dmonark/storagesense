@@ -24,8 +24,16 @@ module.exports = (sequelize, DataTypes) => {
     });
 		device.hasMany(models.temp, {
       foreignKey: 'deviceId',
-      as: 'devices',
+      as: 'devicesTemp',
     });	
+		device.hasMany(models.moisture, {
+      foreignKey: 'deviceId',
+      as: 'devicesMoisture',
+    });
+		device.hasMany(models.cogas, {
+      foreignKey: 'deviceId',
+      as: 'devicesCo',
+    });
   };
 	
   return device;

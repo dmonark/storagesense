@@ -1,9 +1,9 @@
 const users = require('./users');
 const devices = require('./devices');
-const temps = require('./temps');
+const data = require('./data');
 
 module.exports = {
 	users,
 	devices,
-	temps
+	data
 };
