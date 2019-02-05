@@ -8,7 +8,7 @@ let moistureIdentifier = (req, res, next) => {
   next();
 };
 
-let cogasIdentifier = (req, res, next) => {
+let gasIdentifier = (req, res, next) => {
   req.body.whichEntity = 2;
   next();
 };
@@ -16,5 +16,5 @@ let cogasIdentifier = (req, res, next) => {
 module.exports = {
   tempIdentifier,
 	moistureIdentifier,
-	cogasIdentifier
+	gasIdentifier
 }

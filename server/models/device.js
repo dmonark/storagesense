@@ -30,9 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'deviceId',
       as: 'devicesMoisture',
     });
-		device.hasMany(models.cogas, {
+		device.hasMany(models.gas, {
       foreignKey: 'deviceId',
-      as: 'devicesCo',
+      as: 'devicesGas',
     });
   };
 	

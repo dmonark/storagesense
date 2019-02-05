@@ -1,15 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
-  const cogas = sequelize.define('cogas', {
+  const gas = sequelize.define('gas', {
     data: {
       type: DataTypes.STRING,
       allowNull: false
     },
-  });
-  cogas.associate = (models) => {
-    cogas.belongsTo(models.device, {
+  }, {
+		tableName: 'gases'
+	});
+  gas.associate = (models) => {
+    gas.belongsTo(models.device, {
       foreignKey: 'deviceId',
       onDelete: 'CASCADE',
     });
   };
-  return cogas;
+  return gas;
 };

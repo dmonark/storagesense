@@ -16,18 +16,18 @@ module.exports = (app) => {
 	app.get('/api/profile', authServices.checkToken, usersController.profile);
 	
 	//devices
-	app.post('/api/device', authServices.checkToken, devicesValidator.create, devicesController.create);
+	app.post('/api/devices', authServices.checkToken, devicesValidator.create, devicesController.create);
 	
 	//temp
-	app.post('/api/temp', dataValidator.create, entityServices.tempIdentifier, dataController.create);
-	app.get('/api/temp', authServices.checkToken, dataValidator.list, entityServices.tempIdentifier, dataController.index);
+	app.post('/api/temps', dataValidator.create, entityServices.tempIdentifier, dataController.create);
+	app.get('/api/temps', authServices.checkToken, dataValidator.list, entityServices.tempIdentifier, dataController.index);
 	
 	//moisture
-	app.post('/api/moisture', dataValidator.create, entityServices.moistureIdentifier, dataController.create);
-	app.get('/api/moisture', authServices.checkToken, dataValidator.list, entityServices.moistureIdentifier, dataController.index);
+	app.post('/api/moistures', dataValidator.create, entityServices.moistureIdentifier, dataController.create);
+	app.get('/api/moistures', authServices.checkToken, dataValidator.list, entityServices.moistureIdentifier, dataController.index);
 	
 	//co2
-	app.post('/api/co', dataValidator.create, entityServices.cogasIdentifier, dataController.create);
-	app.get('/api/co', authServices.checkToken, dataValidator.list, entityServices.cogasIdentifier, dataController.index);
+	app.post('/api/gases', dataValidator.create, entityServices.gasIdentifier, dataController.create);
+	app.get('/api/gases', authServices.checkToken, dataValidator.list, entityServices.gasIdentifier, dataController.index);
 	
 };

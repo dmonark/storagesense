@@ -1,5 +1,5 @@
 const device = require('../models').device;
-const dataList = [require('../models').temp, require('../models').moisture, require('../models').cogas];
+const dataList = [require('../models').temp, require('../models').moisture, require('../models').gas];
 
 module.exports = {
   create(req, res) {
@@ -24,14 +24,7 @@ module.exports = {
 				let deviceIndex = devices.findIndex(x => x.id == req.query.deviceID);
 				
 				if(deviceIndex == -1)
-					return res.status(400).send({
-            message: 'Coundnt find device',
-					});
-				
-				if(!req.query.start || !req.query.end)
-					return res.status(400).send({
-            message: 'Start and end not found',
-					});
+					deviceIndex = 0;
 				
 				var startDate = req.query.start + "T00:00:01.000Z";
 				var endDate = req.query.end + "T23:59:59.827Z";
@@ -45,7 +38,7 @@ module.exports = {
 					},
 					attributes: ['id', 'data', 'createdAt']
 				})
-				.then((data) => res.status(201).send(data))
+				.then((data) => res.status(200).send(data))
 				.catch((error) => res.status(400).send(error));
 			
 			})
