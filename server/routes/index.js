@@ -18,15 +18,15 @@ module.exports = (app) => {
 	//devices
 	app.post('/api/devices', authServices.checkToken, devicesValidator.create, devicesController.create);
 	
-	//temp
+	//temps
 	app.post('/api/temps', dataValidator.create, entityServices.tempIdentifier, dataController.create);
 	app.get('/api/temps', authServices.checkToken, dataValidator.list, entityServices.tempIdentifier, dataController.index);
 	
-	//moisture
+	//moistures
 	app.post('/api/moistures', dataValidator.create, entityServices.moistureIdentifier, dataController.create);
 	app.get('/api/moistures', authServices.checkToken, dataValidator.list, entityServices.moistureIdentifier, dataController.index);
 	
-	//co2
+	//gases
 	app.post('/api/gases', dataValidator.create, entityServices.gasIdentifier, dataController.create);
 	app.get('/api/gases', authServices.checkToken, dataValidator.list, entityServices.gasIdentifier, dataController.index);
 	

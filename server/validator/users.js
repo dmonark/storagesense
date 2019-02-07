@@ -34,15 +34,15 @@ module.exports = {
 	login(req, res, next) {
 		var emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 		
-		if(!req.query.email)
+		if(!req.body.email)
 			return res.status(422).send({
 				message: 'Email is not proviced',
 			});
-		else if(!emailRegex.test(String(req.query.email).toLowerCase()))
+		else if(!emailRegex.test(String(req.body.email).toLowerCase()))
 			return res.status(422).send({
 				message: 'Email not valid',
 			});
-		else if(!req.query.password)
+		else if(!req.body.password)
 			return res.status(422).send({
 				message: 'Password is not provided',
 			});

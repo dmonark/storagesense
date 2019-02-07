@@ -19,8 +19,8 @@ module.exports = {
 		return user
 			.findOne({
 				where: {
-					email: req.query.email,
-					password: req.query.password
+					email: req.body.email,
+					password: req.body.password
 				},
 				attributes: ['id', 'name', 'email', 'mobile']
 			})
