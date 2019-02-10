@@ -1,6 +1,7 @@
 const usersController = require('../controllers').users;
 const devicesController = require('../controllers').devices;
 const dataController = require('../controllers').data;
+const stockController = require('../controllers').stocks;
 
 const authServices = require('../services/auth.service');
 const entityServices = require('../services/entity.service');
@@ -29,5 +30,11 @@ module.exports = (app) => {
 	//gases
 	app.post('/api/gases', dataValidator.create, entityServices.gasIdentifier, dataController.create);
 	app.get('/api/gases', authServices.checkToken, dataValidator.list, entityServices.gasIdentifier, dataController.index);
+	
+	//stocks
+	app.post('/api/stocks', authServices.checkToken, stockController.create);
+	app.get('/api/stocks/summary', authServices.checkToken, stockController.summary);
+	app.get('/api/stocks/:page', authServices.checkToken, stockController.list);
+	app.delete('/api/stocks/:id', authServices.checkToken, stockController.delete);
 	
 };

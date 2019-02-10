@@ -4,10 +4,10 @@ module.exports = {
   create(req, res) {
     return device
       .create({
-        name: req.query.name,
-				lan: req.query.lan,
-				long: req.query.long,
-				address: req.query.address,
+        name: req.body.name,
+				lan: req.body.lan,
+				long: req.body.long,
+				address: req.body.address,
 				userId: req.decoded.uid
       })
       .then((device) => res.status(201).send(device))

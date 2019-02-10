@@ -5,8 +5,8 @@ module.exports = {
   create(req, res) {
     return dataList[req.body.whichEntity]
       .create({
-        data: req.query.data,
-				deviceId: req.query.deviceID,
+        data: req.body.data,
+				deviceId: req.body.deviceID,
       })
       .then((data) => res.status(201).send(data))
       .catch((error) => res.status(400).send(error));
@@ -21,13 +21,13 @@ module.exports = {
 				attributes: ['id']
 			})
 			.then((devices) => {
-				let deviceIndex = devices.findIndex(x => x.id == req.query.deviceID);
+				let deviceIndex = devices.findIndex(x => x.id == req.body.deviceID);
 				
 				if(deviceIndex == -1)
 					deviceIndex = 0;
 				
-				var startDate = req.query.start + "T00:00:01.000Z";
-				var endDate = req.query.end + "T23:59:59.827Z";
+				var startDate = req.body.start + "T00:00:00.000Z";
+				var endDate = req.body.end + "T24:00:00.000Z";
 				
 				return dataList[req.body.whichEntity].findAll({
 					where: {
