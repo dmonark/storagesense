@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => 
+  up: (queryInterface, Sequelize) =>
     queryInterface.createTable('gas', {
       id: {
         allowNull: false,
@@ -18,15 +18,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-			deviceId: {
-				type: Sequelize.INTEGER,
+      deviceId: {
+        type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
           model: 'devices',
           key: 'id',
           as: 'deviceId',
         },
-			},
+      },
     }),
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('gas');

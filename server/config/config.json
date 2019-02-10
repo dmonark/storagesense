@@ -1,5 +1,5 @@
 {
-	"local": {
+  "local": {
     "username": "postgres",
     "password": "123456",
     "database": "postgres",
@@ -8,7 +8,7 @@
     "dialect": "postgres"
   },
   "development": {
-    "use_env_variable": "DATABASE_URL" 
+    "use_env_variable": "DATABASE_URL"
   },
   "test": {
     "username": "ruhthkgsigewxg",
@@ -19,6 +19,6 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL" 
+    "use_env_variable": "DATABASE_URL"
   }
 }

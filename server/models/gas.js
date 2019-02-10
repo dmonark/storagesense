@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
   }, {
-		tableName: 'gases'
-	});
+    tableName: 'gases'
+  });
   gas.associate = (models) => {
     gas.belongsTo(models.device, {
       foreignKey: 'deviceId',

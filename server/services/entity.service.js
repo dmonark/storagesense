@@ -15,6 +15,6 @@ let gasIdentifier = (req, res, next) => {
 
 module.exports = {
   tempIdentifier,
-	moistureIdentifier,
-	gasIdentifier
+  moistureIdentifier,
+  gasIdentifier
 }

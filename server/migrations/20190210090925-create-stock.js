@@ -9,20 +9,20 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-				allowNull: false,
+        allowNull: false,
       },
       qty: {
         type: Sequelize.FLOAT,
-				allowNull: false,
+        allowNull: false,
       },
       type: {
         type: Sequelize.ENUM,
-				allowNull: false,
-				values: [
+        allowNull: false,
+        values: [
           'remove',
           'add',
         ],
-				defaultValue: 'add'
+        defaultValue: 'add'
       },
       createdAt: {
         allowNull: false,
@@ -32,7 +32,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-			userId: {
+      userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {

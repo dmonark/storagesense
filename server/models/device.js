@@ -22,19 +22,19 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
     });
-		device.hasMany(models.temp, {
+    device.hasMany(models.temp, {
       foreignKey: 'deviceId',
       as: 'devicesTemp',
-    });	
-		device.hasMany(models.moisture, {
+    });
+    device.hasMany(models.moisture, {
       foreignKey: 'deviceId',
       as: 'devicesMoisture',
     });
-		device.hasMany(models.gas, {
+    device.hasMany(models.gas, {
       foreignKey: 'deviceId',
       as: 'devicesGas',
     });
   };
-	
+
   return device;
 };

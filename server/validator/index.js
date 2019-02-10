@@ -4,8 +4,8 @@ const data = require('./data');
 const stocks = require('./stocks');
 
 module.exports = {
-	users,
-	devices,
-	data,
-	stocks
+  users,
+  devices,
+  data,
+  stocks
 };
