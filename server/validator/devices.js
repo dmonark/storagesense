@@ -3,19 +3,19 @@ module.exports = {
 		
 		if(!req.body.name)
 			return res.status(422).send({
-				message: 'Name is not proviced',
+				message: 'Name is missing',
 			});
 		else if(!req.body.lan)
 			return res.status(422).send({
-				message: 'Lan is not proviced',
+				message: 'Latitude is missing',
 			});
 		else if(!req.body.long)
 			return res.status(422).send({
-				message: 'Lan is not proviced',
+				message: 'Longitude is missing',
 			});
 		else if(!req.body.address)
 			return res.status(422).send({
-				message: 'Address is not proviced',
+				message: 'Address is missing',
 			});
 		else
 			next();

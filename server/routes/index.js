@@ -9,6 +9,7 @@ const entityServices = require('../services/entity.service');
 const usersValidator = require('../validator').users;
 const devicesValidator = require('../validator').devices;
 const dataValidator = require('../validator').data
+const stocksValidator = require('../validator').stocks;
 
 module.exports = (app) => {
   //users
@@ -32,9 +33,9 @@ module.exports = (app) => {
 	app.get('/api/gases', authServices.checkToken, dataValidator.list, entityServices.gasIdentifier, dataController.index);
 	
 	//stocks
-	app.post('/api/stocks', authServices.checkToken, stockController.create);
+	app.post('/api/stocks', authServices.checkToken, stocksValidator.create, stockController.create);
 	app.get('/api/stocks/summary', authServices.checkToken, stockController.summary);
-	app.get('/api/stocks/:page', authServices.checkToken, stockController.list);
-	app.delete('/api/stocks/:id', authServices.checkToken, stockController.delete);
+	app.get('/api/stocks/:page', authServices.checkToken, stocksValidator.list, stockController.list);
+	app.delete('/api/stocks/:id', authServices.checkToken, stocksValidator.delete, stockController.delete);
 	
 };

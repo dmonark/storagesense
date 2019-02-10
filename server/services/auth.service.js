@@ -7,7 +7,7 @@ let checkToken = (req, res, next) => {
     jwt.verify(token, 'secret', (err, decoded) => {
       if (err) {
         return res.status(401).send({
-					message: 'Token not valid',
+					message: 'Auth Token is not valid'
 				});
       } else {
         req.decoded = decoded;
@@ -16,7 +16,7 @@ let checkToken = (req, res, next) => {
     });
   } else {
     return res.status(401).send({
-      message: 'Token not provided',
+      message: 'Auth Token is missing'
 		});
   }
 };

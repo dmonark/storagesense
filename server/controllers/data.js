@@ -5,11 +5,11 @@ module.exports = {
   create(req, res) {
     return dataList[req.body.whichEntity]
       .create({
-        data: req.body.data,
+				data: req.body.data,
 				deviceId: req.body.deviceID,
       })
       .then((data) => res.status(201).send(data))
-      .catch((error) => res.status(400).send(error));
+      .catch((error) => res.status(500).send(error));
 	},
 	
 	index(req, res) {
@@ -39,9 +39,9 @@ module.exports = {
 					attributes: ['id', 'data', 'createdAt']
 				})
 				.then((data) => res.status(200).send(data))
-				.catch((error) => res.status(400).send(error));
+				.catch((error) => res.status(500).send(error));
 			
 			})
-      .catch((error) => res.status(400).send(error));
+      .catch((error) => res.status(500).send(error));
 	}
 };

@@ -6,13 +6,13 @@ module.exports = {
   create(req, res) {
     return user
       .create({
-        name: req.body.name,
+				name: req.body.name,
 				password: req.body.password,
 				mobile: req.body.mobile,
 				email: req.body.email
       })
       .then((user) => res.status(201).send(user))
-      .catch((error) => res.status(400).send(error));
+      .catch((error) => res.status(500).send(error));
 	},
 	
 	login(req, res) {
@@ -27,7 +27,7 @@ module.exports = {
 			.then((user) => {
 				if(!user) {
 					return res.status(400).send({
-            message: 'Password didnt match',
+            message: 'Not valid password',
 					});
 				} else {
 					var secret = 'secret';
@@ -35,7 +35,7 @@ module.exports = {
 					return res.status(200).send({token: token, user: user});
 				} 
 			})
-			.catch((error) => res.status(400).send(error));
+			.catch((error) => res.status(500).send(error));
 	},
 	
 	profile(req, res) {
@@ -51,11 +51,11 @@ module.exports = {
 			.then((user) => {
 				if(!user){
 					return res.status(400).send({
-            message: 'User didnt found',
+            message: 'User not found',
 					});
 				}
 				return res.status(200).send(user); 
 			})
-			.catch((error) => res.status(400).send(error));
+			.catch((error) => res.status(500).send(error));
 	}
 };

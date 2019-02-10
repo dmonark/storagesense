@@ -12,7 +12,7 @@ module.exports = {
 					userId: req.decoded.uid
 				})
 				.then((data) => res.status(201).send(data))
-				.catch((error) => res.status(400).send(error));
+				.catch((error) => res.status(500).send(error));
 		} else if(req.body.type == "remove") {
 			return stock
 				.findAll({
@@ -33,13 +33,13 @@ module.exports = {
 								userId: req.decoded.uid
 							})
 							.then((data) => res.status(201).send(data))
-							.catch((error) => res.status(400).send(error));
+							.catch((error) => res.status(500).send(error));
 					else
 						return res.status(400).send({
 								message: 'Not in stock'
 							})
 				})
-				.catch((error) => res.status(400).send(error));
+				.catch((error) => res.status(500).send(error));
 		}
 	},
 	
@@ -54,7 +54,7 @@ module.exports = {
 				group: ['name']
 			})
 			.then((data) => res.status(200).send(data))
-			.catch((error) => res.status(400).send(error));
+			.catch((error) => res.status(500).send(error));
 	},
 	
 	list(req, res) {
@@ -77,7 +77,13 @@ module.exports = {
 			whereList['createdAt'] = {}
 			whereList['createdAt']['gte'] = req.body.startDate + "T00:00:00.000Z"
 			whereList['createdAt']['lte'] = req.body.endDate + "T24:00:00.000Z"
-		}
+		}/* else if(req.body.startDate){
+			whereList['createdAt'] = {}
+			whereList['createdAt']['gte'] = req.body.startDate + "T00:00:00.000Z"
+		} else if(req.body.endDate){
+			whereList['createdAt'] = {}
+			whereList['createdAt']['lte'] = req.body.endDate + "T24:00:00.000Z"
+		}*/
 		
 		return stock
 			.findAll({
@@ -88,7 +94,7 @@ module.exports = {
 				attributes: ['id', 'name', 'qty', 'type', 'createdAt']		
 			})
 			.then((data) => res.status(200).send(data))
-			.catch((error) => res.status(400).send(error));
+			.catch((error) => res.status(500).send(error));
 	},
 	
 	delete(req, res) {
@@ -100,6 +106,6 @@ module.exports = {
 				}
 			})
       .then(() => res.sendStatus(200))
-      .catch((error) => res.status(400).send(error));
+      .catch((error) => res.status(500).send(error));
 	},
 };
