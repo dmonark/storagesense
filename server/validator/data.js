@@ -15,11 +15,11 @@ module.exports = {
 
   list(req, res, next) {
 
-    if (!req.body.start)
+    if (!req.query.start)
       return res.status(422).send({
         message: 'Start Date is missing',
       });
-    else if (!req.body.end)
+    else if (!req.query.end)
       return res.status(422).send({
         message: 'End Date is missing',
       });

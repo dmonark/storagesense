@@ -21,13 +21,13 @@ module.exports = {
         attributes: ['id']
       })
       .then((devices) => {
-        let deviceIndex = devices.findIndex(x => x.id == req.body.deviceID);
+        let deviceIndex = devices.findIndex(x => x.id == req.query.deviceID);
 
         if (deviceIndex == -1)
           deviceIndex = 0;
 
-        var startDate = req.body.start + "T00:00:00.000Z";
-        var endDate = req.body.end + "T24:00:00.000Z";
+        var startDate = req.query.start + "T00:00:00.000Z";
+        var endDate = req.query.end + "T24:00:00.000Z";
 
         return dataList[req.body.whichEntity].findAll({
             where: {
