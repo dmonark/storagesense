@@ -2,7 +2,7 @@ let jwt = require('jsonwebtoken');
 
 let checkToken = (req, res, next) => {
   let token = req.headers['x-token'];
-
+	console.log(req.headers)
   if (token) {
     jwt.verify(token, 'secret', (err, decoded) => {
       if (err) {
