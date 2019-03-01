@@ -1,5 +1,6 @@
 module.exports = {
   create(req, res, next) {
+		var typeList = ['add', 'remove']
     if (!req.body.name)
       return res.status(422).send({
         message: 'Name is missing',
@@ -16,7 +17,7 @@ module.exports = {
       return res.status(422).send({
         message: 'Type is missing',
       });
-    else if (req.body.type != 'add' || req.body.type != 'remove')
+    else if (typeList.indexOf(req.body.type) < 0)
       return res.status(422).send({
         message: 'Type is not valid',
       });
