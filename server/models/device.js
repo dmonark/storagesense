@@ -34,6 +34,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'deviceId',
       as: 'devicesGas',
     });
+		device.hasMany(models.action, {
+      foreignKey: 'deviceId',
+      as: 'devicesAction',
+    });
   };
 
   return device;

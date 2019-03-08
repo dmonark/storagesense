@@ -1,7 +1,8 @@
 const usersController = require('../controllers').users;
 const devicesController = require('../controllers').devices;
 const dataController = require('../controllers').data;
-const stockController = require('../controllers').stocks;
+const stocksController = require('../controllers').stocks;
+const actionsController = require('../controllers').actions;
 
 const authServices = require('../services/auth.service');
 const entityServices = require('../services/entity.service');
@@ -10,6 +11,7 @@ const usersValidator = require('../validator').users;
 const devicesValidator = require('../validator').devices;
 const dataValidator = require('../validator').data
 const stocksValidator = require('../validator').stocks;
+const actionsValidator = require('../validator').actions;
 
 module.exports = (app) => {
   //users
@@ -33,9 +35,12 @@ module.exports = (app) => {
   app.get('/api/gases', authServices.checkToken, dataValidator.list, entityServices.gasIdentifier, dataController.index);
 
   //stocks
-  app.post('/api/stocks', authServices.checkToken, stocksValidator.create, stockController.create);
-  app.get('/api/stocks/summary', authServices.checkToken, stockController.summary);
-  app.get('/api/stocks/:page', authServices.checkToken, stocksValidator.list, stockController.list);
-  app.delete('/api/stocks/:id', authServices.checkToken, stocksValidator.delete, stockController.delete);
+  app.post('/api/stocks', authServices.checkToken, stocksValidator.create, stocksController.create);
+  app.get('/api/stocks/summary', authServices.checkToken, stocksController.summary);
+  app.get('/api/stocks/:page', authServices.checkToken, stocksValidator.list, stocksController.list);
+  app.delete('/api/stocks/:id', authServices.checkToken, stocksValidator.delete, stocksController.delete);
 
+	app.post('/api/actions', authServices.checkToken, actionsValidator.create, actionsController.create);
+  app.get('/api/actions/:page', authServices.checkToken, actionsController.list);
+	app.get('/api/actions', authServices.checkToken, actionsValidator.latest, actionsController.latest);
 };

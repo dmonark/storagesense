@@ -26,7 +26,7 @@ module.exports = {
           raw: true,
         })
         .then((data) => {
-          if (data[0].total > req.body.qty)
+          if (data[0].total >= req.body.qty)
             return stock
               .create({
                 name: req.body.name,
