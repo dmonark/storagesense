@@ -83,7 +83,7 @@ module.exports = {
 				
 				whereList['deviceId'] = devices[deviceIndex].id
 				
-				if(req.query.what)
+				if(req.query.what !== "all")
 					whereList['what'] = req.query.what
 				
 				if(req.query.origin)

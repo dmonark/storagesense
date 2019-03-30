@@ -26,10 +26,6 @@ module.exports = {
 			return res.status(422).send({
         message: 'Device ID is missing',
       });
-		else if(isNaN(req.body.deviceID))
-			return res.status(422).send({
-        message: 'Device ID is not valid',
-      });
     else
       next();
   },

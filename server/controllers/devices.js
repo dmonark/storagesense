@@ -12,5 +12,15 @@ module.exports = {
       })
       .then((device) => res.status(201).send(device))
       .catch((error) => res.status(500).send(error));
-  }
+  },
+	
+	list(req, res) {
+		return device.
+			findAll({
+				
+			})
+			.then((devices) => res.status(200).send(devices))
+			.catch((error) => res.status(500).send(error));
+	}
+	
 };

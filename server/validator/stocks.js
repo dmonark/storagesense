@@ -32,14 +32,5 @@ module.exports = {
       });
     else
       next();
-  },
-
-  delete(req, res, next) {
-    if (isNaN(req.params.id))
-      return res.status(404).send({
-        message: 'Not found.',
-      });
-    else
-      next();
   }
 };

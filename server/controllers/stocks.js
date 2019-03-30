@@ -100,17 +100,5 @@ module.exports = {
       })
       .then((data) => res.status(200).send(data))
       .catch((error) => res.status(500).send(error));
-  },
-
-  delete(req, res) {
-    return stock
-      .destroy({
-        where: {
-          id: req.params.id,
-          userId: req.decoded.uid
-        }
-      })
-      .then(() => res.sendStatus(200))
-      .catch((error) => res.status(500).send(error));
-  },
+  }
 };
