@@ -19,12 +19,15 @@ module.exports = (app) => {
   app.post('/api/register', usersValidator.create, usersController.create);
   app.post('/api/login', usersValidator.login, usersController.login);
   app.get('/api/profile', authServices.checkToken, usersController.profile);
-
+	app.post('/api/user/notification', authServices.checkToken, usersController.notificationUpdate);
   //devices
   app.post('/api/devices', authServices.checkToken, devicesValidator.create, devicesController.create);
 	
 	//devices-station-secert
 	app.get('/api/devices', devicesController.list);
+	
+	//data
+	app.post('/api/data', dataController.list);
 	
   //temps
   app.post('/api/temps', dataValidator.create, entityServices.tempIdentifier, dataController.create);

@@ -65,5 +65,18 @@ module.exports = {
         return res.status(200).send(user);
       })
       .catch((error) => res.status(500).send(error));
-  }
+  },
+	
+	notificationUpdate(req, res) {
+		return user.
+			update({
+					notification: req.body.notification
+				},{
+					where: {
+						id: req.decoded.uid
+					}
+				})
+			.then((user) => res.status(200).send(user))
+      .catch((error) => res.status(500).send(error));
+	}
 };

@@ -43,5 +43,31 @@ module.exports = {
 
       })
       .catch((error) => res.status(500).send(error));
-  }
+  },
+	
+	list(req, res){
+		return dataList[0]
+      .create({
+        data: req.body.temp,
+        deviceId: req.body.deviceID,
+      })
+      .then((temp) => {
+				return dataList[1]
+					.create({
+						data: req.body.moisture,
+						deviceId: req.body.deviceID,
+					})
+					.then((moisture) => {
+						return dataList[2]
+							.create({
+								data: req.body.gas,
+								deviceId: req.body.deviceID,
+							})
+							.then((gas) => res.status(201).send({temp, moisture, gas}))
+							.catch((error) => res.status(500).send(error));
+					})
+					.catch((error) => res.status(500).send(error));
+			})
+      .catch((error) => res.status(500).send(error));
+	}
 };

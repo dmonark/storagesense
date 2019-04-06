@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     mobile: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+		notification: {
+      type: DataTypes.STRING
     }
   });
   user.associate = (models) => {

@@ -2,7 +2,7 @@
   "local": {
     "username": "postgres",
     "password": "123456",
-    "database": "postgres",
+    "database": "storagesense",
     "host": "localhost",
     "port": 5432,
     "dialect": "postgres"

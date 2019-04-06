@@ -1,15 +1,23 @@
 const upload = require('../models').upload;
+const uploadImage = require('../services/upload.service');
+
+const singleUpload = uploadImage.single('image');
 
 module.exports = {
   create(req, res) {
-    return upload
-      .create({
-        name: req.body.name,
-        location: req.body.location,
-        userId: req.decoded.uid
-      })
-      .then((data) => res.status(201).send(data))
-      .catch((error) => res.status(500).send(error));
+		singleUpload(req, res, function(err) {
+			if (err) {
+				return res.status(422).send({err});
+			}
+			return upload
+				.create({
+					name: "Uploaded Image",
+					location: req.file.location,
+					userId: req.decoded.uid
+				})
+				.then((data) => res.status(201).send(data))
+				.catch((error) => res.status(500).send(error));
+		});
   },
 	list(req, res) {
 		let limit = 10;

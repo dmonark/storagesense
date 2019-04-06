@@ -9,7 +9,7 @@ let checkToken = (req, res, next) => {
           message: 'Auth Token is not valid'
         });
       } else {
-        req.decoded = decoded;
+				req.decoded = decoded;
         next();
       }
     });

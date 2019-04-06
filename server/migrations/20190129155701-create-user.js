@@ -8,17 +8,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+				allowNull: false,
         type: Sequelize.STRING
       },
       email: {
+				allowNull: false,
         type: Sequelize.STRING
       },
       password: {
+				allowNull: false,
         type: Sequelize.STRING
       },
       mobile: {
+				allowNull: false,
         type: Sequelize.STRING
       },
+			notification: {
+				type: Sequelize.STRING
+			},
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
