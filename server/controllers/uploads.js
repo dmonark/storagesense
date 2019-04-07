@@ -9,6 +9,7 @@ module.exports = {
 			if (err) {
 				return res.status(422).send({err});
 			}
+			console.log(req.file)
 			return upload
 				.create({
 					name: "Uploaded Image",
