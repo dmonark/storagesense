@@ -16,8 +16,7 @@ const upload = multer({
     bucket: 'storage-sense',
 		ACL: 'public-read',
     key: function (req, file, cb) {
-			console.log(file)
-      cb(null, Date.now().toString() + ".jpg")
+			cb(null, Date.now().toString() + ".jpg")
     }
   })
 });
