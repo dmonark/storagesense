@@ -15,7 +15,7 @@ const stocksValidator = require('../validator').stocks;
 const actionsValidator = require('../validator').actions;
 
 module.exports = (app) => {
-  //users
+	//users
   app.post('/api/register', usersValidator.create, usersController.create);
   app.post('/api/login', usersValidator.login, usersController.login);
   app.get('/api/profile', authServices.checkToken, usersController.profile);
