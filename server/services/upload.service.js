@@ -18,7 +18,7 @@ const upload = multer({
     key: function (req, file, cb) {
 			cb(null, Date.now().toString() + ".jpg")
     }
-  })
+  }, console.log("OKAY"))
 });
 
 module.exports = upload;

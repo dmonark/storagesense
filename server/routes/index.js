@@ -7,6 +7,7 @@ const uploadsController = require('../controllers').uploads;
 
 const authServices = require('../services/auth.service');
 const entityServices = require('../services/entity.service');
+const uploadServices = require('../services/upload.service');
 
 const usersValidator = require('../validator').users;
 const devicesValidator = require('../validator').devices;
@@ -52,7 +53,7 @@ module.exports = (app) => {
 	app.get('/api/actions/:page', authServices.checkToken, actionsController.list);
 	
 	//images
-	app.post('/api/images', authServices.checkToken, uploadsController.create);
+	app.post('/api/images', authServices.checkToken, uploadServices.array('image', 1), uploadsController.create);
 	app.get('/api/images/:page', authServices.checkToken, uploadsController.list);
 	
 	//images-station-secert

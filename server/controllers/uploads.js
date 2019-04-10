@@ -5,19 +5,20 @@ const singleUpload = uploadImage.single('image');
 
 module.exports = {
   create(req, res) {
-		singleUpload(req, res, function(err) {
-			if (err) {
-				return res.status(422).send({err});
-			}
+		console.log(req.files[0])
+		if(req.files[0]) {
 			return upload
 				.create({
 					name: "Uploaded Image",
-					location: req.file.location,
+					location: req.files[0].location,
 					userId: req.decoded.uid
 				})
 				.then((data) => res.status(201).send(data))
 				.catch((error) => res.status(500).send(error));
-		});
+		} else {
+			res.status(404).send({message: 'Images not uploaded'})
+		}
+		
   },
 	list(req, res) {
 		let limit = 10;
