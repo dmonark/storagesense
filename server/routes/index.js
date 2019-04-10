@@ -21,14 +21,16 @@ module.exports = (app) => {
   app.post('/api/login', usersValidator.login, usersController.login);
   app.get('/api/profile', authServices.checkToken, usersController.profile);
 	app.post('/api/user/notification', authServices.checkToken, usersController.notificationUpdate);
-  //devices
+  
+	//devices
   app.post('/api/devices', authServices.checkToken, devicesValidator.create, devicesController.create);
 	
 	//devices-station-secert
 	app.get('/api/devices', devicesController.list);
 	
-	//data
+	//data-iot-station-secert
 	app.post('/api/data', dataController.list);
+	app.get('/api/data/:id', dataController.latest);
 	
   //temps
   app.post('/api/temps', dataValidator.create, entityServices.tempIdentifier, dataController.create);
@@ -51,6 +53,9 @@ module.exports = (app) => {
 	app.post('/api/actions', authServices.checkToken, actionsValidator.create, actionsController.create);
   app.get('/api/actions/latest', authServices.checkToken, actionsValidator.latest, actionsController.latest);
 	app.get('/api/actions/:page', authServices.checkToken, actionsController.list);
+	
+	//actions-secert
+	app.post('/api/actions/secert', actionsController.secertCreate)
 	
 	//images
 	app.post('/api/images', authServices.checkToken, uploadServices.array('image', 1), uploadsController.create);

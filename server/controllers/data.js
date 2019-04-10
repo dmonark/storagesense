@@ -69,5 +69,52 @@ module.exports = {
 					.catch((error) => res.status(500).send(error));
 			})
       .catch((error) => res.status(500).send(error));
+	},
+	
+	latest(req, res){
+		console.log(req.params)
+		return dataList[0]
+			.findOne({
+				limit: 1,
+				where: {
+					deviceId: req.params.id,
+				},
+				order: [
+					['id', 'DESC']
+				],
+				attributes: ['id', 'data', 'createdAt']
+			})
+			.then((temp) => {
+				return dataList[1]
+					.findOne({
+						limit: 1,
+						where: {
+							deviceId: req.params.id,
+						},
+						order: [
+							['id', 'DESC']
+						],
+						attributes: ['id', 'data', 'createdAt']
+					})
+					.then((moisture) => {
+						return dataList[2]
+							.findOne({
+								limit: 1,
+								where: {
+									deviceId: req.params.id,
+								},
+								order: [
+									['id', 'DESC']
+								],
+								attributes: ['id', 'data', 'createdAt']
+							})
+							.then((gas) => {
+								res.status(201).send({temp, moisture, gas})
+							})
+							.catch((error) => res.status(500).send(error));
+					})
+					.catch((error) => res.status(500).send(error));
+			})
+			.catch((error) => res.status(500).send(error));
 	}
 };

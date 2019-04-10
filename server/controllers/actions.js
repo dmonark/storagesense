@@ -30,6 +30,18 @@ module.exports = {
       .catch((error) => res.status(500).send(error));	
   },
 
+	secertCreate(req, res) {
+		return action
+			.create({
+				origin: 'station',
+				what: req.body.what,
+				metadata: req.body.data,
+				deviceId: req.body.id
+			})
+			.then((data) => res.status(201).send(data))
+			.catch((error) => res.status(500).send(error))
+	},
+	
   latest(req, res) {
     return device.
 			findAll({
